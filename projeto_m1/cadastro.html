@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cadastrar Perfil</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-image">
+        <img src="img/undraw_shopping_re_hdd9.svg">
+      </div>
+        <div class="form">
+          <form action="#">
+            <div class="form-header">
+              <div class="title">
+                  <h1>Cadastre-se</h1>
+              </div>
+              <div class="login-button">
+                  <button><a href="#">Entrar</a></button>
+              </div>
+          </div>
+
+          <div class="input-group">
+              <div class="input-box">
+                  <label for="name">Nome completo:</label>
+                  <input id="name" type="text" name="name" placeholder="Digite seu nome" required>
+              </div>
+
+              <div class="input-box">
+                  <label for="idade">Idade</label>
+                  <input id="idade" type="number" name="idade" placeholder="Digite sua idade" required>
+              </div>
+
+              <div class="input-box">
+                  <label for="description">Bibliografia</label>
+                  <input id="description" type="tel" name="description" placeholder="fale um pouco sobre você" required>
+              </div>
+
+          </div>
+
+          <div class="gender-inputs">
+              <div class="gender-title">
+                  <h6>Gênero</h6>
+              </div>
+
+              <div class="gender-group">
+                  <div class="gender-input">
+                      <input id="female" type="radio" name="gender">
+                      <label for="female">Feminino</label>
+                  </div>
+
+                  <div class="gender-input">
+                      <input id="male" type="radio" name="gender">
+                      <label for="male">Masculino</label>
+                  </div>
+
+                  <div class="gender-input">
+                      <input id="others" type="radio" name="gender">
+                      <label for="others">Outros</label>
+                  </div>
+
+                  <div class="gender-input">
+                      <input id="none" type="radio" name="gender">
+                      <label for="none">Prefiro não dizer</label>
+                  </div>
+              </div>
+          </div>
+
+          <div class="continue-button">
+              <button><a href="#">Continuar</a> </button>
+          </div>
+          </form>
+        </div>
+    </div>
+    <script>
+    //IIFE Immediately Invoked Function Expression
+      ;(function(){
+      
+          //Pega os elementos da tela e declara como constantes
+          const leitorDeArquivos = new FileReader(),
+                  formulario = document.querySelector('.upload-imagem'),
+                  previaDaImagem = document.querySelector('.imagem'),
+                  inputArquivo = document.querySelector('.upload'),
+                  btnAtualiza = document.querySelector('.btnAtualiza');
+      
+          
+          function leEAtualiza(){
+              //pega o arquivo enviado e guarda nesta variavel
+              let imagemEnviada = inputArquivo.files[0];
+      
+              //Usa a função do objeto leitor de arquivos, que lê o arquivo, e consegue reaproveita-lo para usar o arquivo como uma URL
+              leitorDeArquivos.readAsDataURL(imagemEnviada);
+              
+              //Após leitura da imagem (evento load), a função de callback define o valor do src da imagem de prévia com o valor do resultado da leitura do leitor de arquivos
+              leitorDeArquivos.addEventListener('loadend', function(load){
+                  
+                  //veja no console o que o resultado do leitor de arquivos :)
+                  console.log(load.target.result);
+                  //define o caminho da imagem com o caminho criado pelo leitor de arquivos
+                  previaDaImagem.src = load.target.result
+              })
+          }
+      
+          //Quando o formulário for enviado:
+          formulario.addEventListener('submit', function(submit){
+              //empede o recarregamento da página
+              submit.preventDefault();
+      
+              leEAtualiza();
+          })
+      
+          //Ou quando clica no boão atualizar
+          btnAtualiza.addEventListener('click', function(){
+              leEAtualiza();
+          })
+          
+      
+      })()
+    </script>
+    <script>
+      function confirmacao()
+      {
+        alert("informações salvas com sucesso!!!");
+      }
+    </script>
+  </body>
+</html>
