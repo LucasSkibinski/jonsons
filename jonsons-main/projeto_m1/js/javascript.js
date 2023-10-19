@@ -40,7 +40,17 @@
 
 function confirmacao()
 {
-    alert("informações salvas com sucesso!!!");
+var x;
+var r=confirm("Todos os campos foram preenchidos corretamente?");
+if (r==true)
+    {
+    alert ("Salvo com sucesso!!");
+    }
+else
+    {
+    x="";
+    }
+document.getElementById("demo").innerHTML=x;
 }
 
 function lettersOnly(evt) {

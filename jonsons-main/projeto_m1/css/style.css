@@ -216,6 +216,10 @@ body {
     margin-bottom: 1.1rem;
 }
 
+.imagem{
+    border-radius: 50%;
+}
+
 .formII{
     width: 50%;
     display: flex;
